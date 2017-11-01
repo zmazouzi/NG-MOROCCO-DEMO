@@ -3,3 +3,7 @@
 .vertical-offset-100{
   padding-top:100px;
 }
+.hand:hover {
+
+  animation: wobble 1s;
+}

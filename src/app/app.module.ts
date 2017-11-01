@@ -15,7 +15,7 @@ import {FormsModule} from "@angular/forms";
 import {DataService} from "./data.service";
 
 export const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent }
 ];

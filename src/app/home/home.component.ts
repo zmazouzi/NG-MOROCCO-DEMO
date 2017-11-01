@@ -35,6 +35,11 @@ export class HomeComponent implements OnInit {
   }
 
 
+  ngWave(uid: string) {
+    // wave other ng-morcco community members
+  }
+
+
 
 
 }
