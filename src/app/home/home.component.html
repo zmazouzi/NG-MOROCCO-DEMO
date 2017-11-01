@@ -1,0 +1,54 @@
+
+
+<div class="container bootstrap snippet">
+
+  <div class="input-group"  style="margin-top: 100px" >
+    <span class="input-group-addon"  >Search</span>
+    <input type="text" class="form-control" placeholder="Search for Ng-morocco People " [(ngModel)]="query" aria-describedby="basic-addon1">
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="main-box no-header clearfix">
+        <div class="main-box-body clearfix">
+          <div class="table-responsive">
+            <table class="table user-list">
+              <thead>
+
+              <tr>
+                <th><span>User</span></th>
+                <th><span>LastLog</span></th>
+                <th class="text-center"><span>Status</span></th>
+                <th><span>Email</span></th>
+                <th>&nbsp;</th>
+              </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let ngUser of ngUsers | fullTextSearch:query:'displayName'">
+                  <td>
+                    <img src="{{ngUser.photoURL}}" alt="">
+                    <a href="#" class="user-link">{{ ngUser.displayName}}</a>
+                    <span class="user-subhead">Member</span>
+                  </td>
+                  <td>{{ngUser?.lastLog  | date}}</td>
+                  <td class="text-center">
+                    <span class="label label-default">{{ ngUser.state}}</span>
+                  </td>
+                  <td>
+                    <a href="#">{{ngUser.email}}</a>
+                  </td>
+
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
