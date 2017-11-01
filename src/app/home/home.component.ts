@@ -22,6 +22,18 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  getStyle(state: string) {
+    var style: string;
+    if(state == "ONLINE") {
+      style = "badge-success"
+    }
+    else {
+      style = "badge-default"
+
+    }
+    return style
+  }
+
 
 
 

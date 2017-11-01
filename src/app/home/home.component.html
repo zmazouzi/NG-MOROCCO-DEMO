@@ -21,6 +21,7 @@
                 <th><span>LastLog</span></th>
                 <th class="text-center"><span>Status</span></th>
                 <th><span>Email</span></th>
+                <th><span>Waves</span></th>
                 <th>&nbsp;</th>
               </tr>
               </thead>
@@ -34,14 +35,14 @@
                   </td>
                   <td>{{ngUser?.lastLog  | date}}</td>
                   <td class="text-center">
-                    <span class="label label-default">{{ ngUser.state}}</span>
+                    <span class="badge {{getStyle(ngUser.state)}}">{{ ngUser.state}}</span>
                   </td>
                   <td>
                     <a href="#">{{ngUser.email}}</a>
                   </td>
-
-
+                  <td></td>
               </tr>
+
 
               </tbody>
             </table>
