@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../auth.service";
-import {Router} from "@angular/router";
-import {AngularFirestore, AngularFirestoreCollection} from "angularfire2/firestore";
-import {Observable} from "rxjs/Observable";
 import {DataService} from "../data.service";
-
+import 'rxjs/add/operator/debounceTime';
+import * as moment from 'moment';
+import * as Rx from 'rxjs/Rx';
+import {ToastrService} from "toastr-ng2";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,10 +12,31 @@ import {DataService} from "../data.service";
 export class HomeComponent implements OnInit {
 
   ngUsers: any[];
-  constructor(public dataService: DataService){
-    this.dataService.ngUsers.subscribe(res=> {
-      this.ngUsers = res, error => console.log(error)
+
+  private waveEvent = new Rx.Subject<any>();
+  constructor(public dataService: DataService,
+              private toastr: ToastrService
+  ){
+    this.dataService.ngUsers
+      .subscribe(res=> {
+
+        var users: any[] = res;
+        for (let user of users) {
+          user.lastLog = moment(user.lastLog).fromNow();;
+        }
+
+      this.ngUsers = users, error => console.log(error)
     })
+
+    // listen to wave events
+    this.waveEvent
+      .debounceTime(2000)
+      .subscribe( res => {
+        // wave other ng-morcco community members
+        this.toastr.info((res))
+
+    })
+
   }
 
   ngOnInit() {
@@ -37,6 +57,7 @@ export class HomeComponent implements OnInit {
 
   ngWave(uid: string) {
     // wave other ng-morcco community members
+      this.waveEvent.next(uid)
   }
 
 

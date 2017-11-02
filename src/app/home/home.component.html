@@ -9,14 +9,14 @@
   <br>
 
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-9" >
       <div class="main-box no-header clearfix">
         <div class="main-box-body clearfix">
           <div class="table-responsive">
             <table class="table user-list">
-              <thead>
+              <thead style="background-color: #F45D5D;">
 
-              <tr>
+              <tr style="color: whitesmoke">
                 <th><span>User</span></th>
                 <th><span>LastLog</span></th>
                 <th class="text-center"><span>Status</span></th>
@@ -33,14 +33,14 @@
                     <a href="#" class="user-link">{{ ngUser.displayName}}</a>
                     <span class="user-subhead">Member</span>
                   </td>
-                  <td>{{ngUser?.lastLog  | date}}</td>
+                  <td>{{ngUser?.lastLog  }}</td>
                   <td class="text-center">
                     <span class="badge {{getStyle(ngUser.state)}}">{{ ngUser.state}}</span>
                   </td>
                   <td>
                     <a href="#">{{ngUser.email}}</a>
                   </td>
-                  <td><a (click)="ngWave(ngUser.uid)"><i class="hand fa fa-hand-paper-o animated pulse  infinite" style="font-size:36px"></i></a></td>
+                  <td><a  (mouseover)="ngWave(ngUser.uid)"><i class="hand fa fa-hand-paper-o animated pulse  infinite" style="font-size:36px"></i></a></td>
 
               </tr>
 
@@ -51,6 +51,33 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-3"><div class="main-box no-header clearfix">
+      <div class="main-box-body clearfix">
+        <div class="table-responsive">
+          <table class="table user-list" style="height: 310px">
+            <thead>
+
+            <tr >
+              <th style="text-align: center"><span>WAVE</span></th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let ngUser of ngUsers">
+              <td style="height: 100px">
+                <img src="{{ngUser.photoURL}}" alt="">
+                <a href="#" class="user-link"></a>
+                <span class="user-subhead">Member</span>
+              </td>
+            </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div></div>
   </div>
 </div>
 
