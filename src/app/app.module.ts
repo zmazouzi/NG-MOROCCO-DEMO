@@ -14,6 +14,9 @@ import { FullTextSearchPipe } from './full-text-search.pipe';
 import {FormsModule} from "@angular/forms";
 import {DataService} from "./data.service";
 
+import {ToastrModule, ToastrService} from "toastr-ng2";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
@@ -29,13 +32,15 @@ export const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    ToastrModule.forRoot(),
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService,DataService],
+  providers: [AuthService,DataService,ToastrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

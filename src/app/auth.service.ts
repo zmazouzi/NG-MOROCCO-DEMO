@@ -105,4 +105,17 @@ export class AuthService {
 
   }
 
+
+  // Get user ID only once to update their state to 'OFFLINE' when they close the browser
+
+  getUserID() {
+    return this.afAuth.authState
+
+      .take(1)
+      .map( res => { return res.uid})
+
+
+  }
+
+
 }

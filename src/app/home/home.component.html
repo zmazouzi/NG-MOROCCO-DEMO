@@ -1,6 +1,4 @@
-
-
-<div class="container bootstrap snippet">
+<div class="container bootstrap snippet" (mousemove)="updateState($event)"   >
 
   <div class="input-group"  style="margin-top: 100px" >
     <span class="input-group-addon"  >Search</span>
@@ -9,7 +7,7 @@
   <br>
 
   <div class="row">
-    <div class="col-lg-9" >
+    <div class="col-lg-12" >
       <div class="main-box no-header clearfix">
         <div class="main-box-body clearfix">
           <div class="table-responsive">
@@ -26,7 +24,6 @@
               </tr>
               </thead>
               <tbody>
-
                 <tr *ngFor="let ngUser of ngUsers | fullTextSearch:query:'displayName'">
                   <td>
                     <img src="{{ngUser.photoURL}}" alt="">
@@ -51,33 +48,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3"><div class="main-box no-header clearfix">
-      <div class="main-box-body clearfix">
-        <div class="table-responsive">
-          <table class="table user-list" style="height: 310px">
-            <thead>
 
-            <tr >
-              <th style="text-align: center"><span>WAVE</span></th>
-
-            </tr>
-            </thead>
-            <tbody>
-
-            <tr *ngFor="let ngUser of ngUsers">
-              <td style="height: 100px">
-                <img src="{{ngUser.photoURL}}" alt="">
-                <a href="#" class="user-link"></a>
-                <span class="user-subhead">Member</span>
-              </td>
-            </tr>
-
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div></div>
   </div>
 </div>
 
