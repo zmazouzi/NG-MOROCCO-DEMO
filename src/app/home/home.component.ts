@@ -8,6 +8,7 @@ import {AngularFirestore} from "angularfire2/firestore";
 import {AuthService, User} from "../auth.service";
 import  { Subscription } from 'rxjs/Subscription'
 import {Observable} from "rxjs/Observable";
+import {UserPresenceService} from "../user-presence.service";
 
 
 @Component({
@@ -19,24 +20,25 @@ export class HomeComponent implements OnInit {
 
   ngUsers: any[];
   timer: Subscription;
-  userId: string;
   userRef;
+  userId: string;
+
   private mouseEvent = new Rx.Subject<any>();
 
   constructor(public dataService: DataService,
               private toastr: ToastrService,
               private afs: AngularFirestore,
-              private authService: AuthService
+              private authService: AuthService,
+              private userPresence: UserPresenceService
   ){
 
 
-
     this.authService.getUserID().subscribe( userId => {
-    this.userId = userId
+      this.userId = userId
       this.userRef = this.afs.doc<User>(`users/${this.userId}`)
 
       console.log(this.userId)
-  });
+    });
 
 
     this.dataService.ngUsers
@@ -49,21 +51,28 @@ export class HomeComponent implements OnInit {
           user.lastLog = moment(user.lastLog).fromNow();
         }
 
-      this.ngUsers = users, error => console.log(error)
+        this.ngUsers = users
+        // console.log(this.ngUsers)
+
+
+        , error => console.log(error)
     })
 
 
 
-  }
+    this.userPresence.getUsers(this.dataService.ngUsers)
+   }
 
   ngOnInit() {
     this.mouseEvent
       .throttleTime(2000)
       .subscribe( res => {
         // update User state
-        console.log(res)
-         this.userRef.update({ state: 'ONLINE'})
-         this.resetTimer()
+          if (this.userRef) {
+            this.userRef.update({ state: 'ONLINE'})
+            this.resetTimer()
+          }
+
       })
 
   }
@@ -84,17 +93,17 @@ export class HomeComponent implements OnInit {
   }
 
 
-  ngWave(uid: string) {
-    // wave other ng-morcco community members
-
-  }
 
 
+
+
+  // update UserState to Online and resetTimer
   updateState(event) {
 
     this.mouseEvent.next(event)
   }
 
+// if timer expire set state to away
 
   resetTimer() {
     if (this.timer) this.timer.unsubscribe();

@@ -1,0 +1,31 @@
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6" style="margin-top: 10px">
+    <h3>      Welcom to NG-MOROCCO-DEMO app</h3>
+
+      <h5>the following features ! </h5>
+
+    </div>
+
+    <div class="col-md-6" style="display: block;margin-top: 10px">
+      <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              [options]="chartOptions"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"
+
+
+
+      ></canvas>
+
+    </div>
+
+  </div>
+
+  </div>
+

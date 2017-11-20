@@ -16,6 +16,9 @@ import {DataService} from "./data.service";
 
 import {ToastrModule, ToastrService} from "toastr-ng2";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {UserPresenceService} from "./user-presence.service";
+import {ChartsModule} from "ng2-charts";
+import { ChartsComponent } from './charts/charts.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -28,7 +31,8 @@ export const routes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    FullTextSearchPipe
+    FullTextSearchPipe,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,11 +40,12 @@ export const routes: Routes = [
     RouterModule.forRoot(routes),
     ToastrModule.forRoot(),
     FormsModule,
+    ChartsModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService,DataService,ToastrService],
+  providers: [AuthService,DataService,ToastrService,UserPresenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

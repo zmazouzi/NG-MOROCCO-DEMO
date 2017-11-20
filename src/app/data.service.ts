@@ -9,6 +9,7 @@ import {ToastrService} from "toastr-ng2";
 export class DataService {
   ngUsersRef: AngularFirestoreCollection<any>;
   ngUsers: Observable<any[]>;
+
   userID: any;
 
 
@@ -21,7 +22,7 @@ export class DataService {
 
     // Get the list of ngUSERS
 
-    this.ngUsersRef = afs.collection('users', ref => ref.orderBy("displayName",'desc'))
+    this.ngUsersRef = afs.collection('users', ref => ref.orderBy("state",'desc'))
     this.ngUsers = this.ngUsersRef.valueChanges();
 
 

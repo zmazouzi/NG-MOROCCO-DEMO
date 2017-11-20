@@ -4,6 +4,7 @@ import * as firebase from "firebase";
 import {Observable} from "rxjs/Observable";
 import {AngularFirestore, AngularFirestoreDocument} from "angularfire2/firestore";
 import {Router} from "@angular/router";
+import {ToastrService} from "toastr-ng2";
 
 
 export interface User {
@@ -12,7 +13,8 @@ export interface User {
   photoURL?: string,
   displayName?: string,
   lastLog?: number,
-  state?: string
+  state?: string,
+  WaverDisplayName?:string
 }
 
 @Injectable()
@@ -22,7 +24,8 @@ export class AuthService {
     userData: any;
   constructor(public afAuth: AngularFireAuth,
               public afs: AngularFirestore,
-              public router: Router
+              public router: Router,
+              public toastrService: ToastrService
   ) {
       this.afAuth.authState
         .switchMap(user => {
@@ -31,6 +34,7 @@ export class AuthService {
             this.userRef = this.afs.doc<User>(`users/${user.uid}`)
             this.userRef.update({ state: 'ONLINE'})
             this.ngUser = this.userRef.valueChanges();
+            this.toastrService.info("someone waved you")
             return this.ngUser
 
           }
@@ -106,8 +110,9 @@ export class AuthService {
   }
 
 
-  // Get user ID only once to update their state to 'OFFLINE' when they close the browser
 
+
+  // Get user ID only once to update their state to 'OFFLINE' when they close the browser
   getUserID() {
     return this.afAuth.authState
 

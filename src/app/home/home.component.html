@@ -1,5 +1,9 @@
 <div class="container bootstrap snippet" (mousemove)="updateState($event)"   >
 
+
+  <app-charts ></app-charts>
+
+
   <div class="input-group"  style="margin-top: 100px" >
     <span class="input-group-addon"  >Search</span>
     <input type="text" class="form-control" placeholder="Search for Ng-morocco People " [(ngModel)]="query" aria-describedby="basic-addon1">
@@ -24,7 +28,7 @@
               </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let ngUser of ngUsers | fullTextSearch:query:'displayName'">
+                <tr *ngFor="let ngUser of ngUsers | fullTextSearch:query:'displayName' ">
                   <td>
                     <img src="{{ngUser.photoURL}}" alt="">
                     <a href="#" class="user-link">{{ ngUser.displayName}}</a>
@@ -37,7 +41,7 @@
                   <td>
                     <a href="#">{{ngUser.email}}</a>
                   </td>
-                  <td><a  (mouseover)="ngWave(ngUser.uid)"><i class="hand fa fa-hand-paper-o animated pulse  infinite" style="font-size:36px"></i></a></td>
+                  <td><a  ><i class="hand fa fa-hand-paper-o animated pulse  infinite" style="font-size:36px"></i></a></td>
 
               </tr>
 
