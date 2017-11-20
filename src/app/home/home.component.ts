@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from "../data.service";
+import {DataService} from "../services/data.service";
 import 'rxjs/add/operator/debounceTime';
 import * as moment from 'moment';
 import * as Rx from 'rxjs/Rx';
 import {ToastrService} from "toastr-ng2";
 import {AngularFirestore} from "angularfire2/firestore";
-import {AuthService, User} from "../auth.service";
+import {AuthService, User} from "../services/auth.service";
 import  { Subscription } from 'rxjs/Subscription'
 import {Observable} from "rxjs/Observable";
 import {UserPresenceService} from "../user-presence.service";

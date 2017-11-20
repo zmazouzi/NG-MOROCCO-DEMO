@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DataService} from "./data.service";
+import {DataService} from "./services/data.service";
 import  * as _ from 'lodash'
 import {Subject} from "rxjs/Subject";
 

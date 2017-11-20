@@ -4,12 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import * as Rx from 'rxjs/Rx';
 import {Subject} from "rxjs/Subject";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {AuthService, User} from "./auth.service";
+import {AuthService, User} from "./services/auth.service";
 import {Router} from "@angular/router";
 import {AngularFireAuth} from "angularfire2/auth";
 
 import {ToastrService} from "toastr-ng2";
-import {DataService} from "./data.service";
+import {DataService} from "./services/data.service";
 
 export interface Item { name: string; }
 
