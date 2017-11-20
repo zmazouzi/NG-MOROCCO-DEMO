@@ -9,10 +9,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginComponent } from './login/login.component';
 import {RouterModule, Routes} from "@angular/router";
 import { HomeComponent } from './home/home.component';
-import {AuthService} from "./auth.service";
+import {AuthService} from "./services/auth.service";
 import { FullTextSearchPipe } from './full-text-search.pipe';
 import {FormsModule} from "@angular/forms";
-import {DataService} from "./data.service";
+import {DataService} from "./services/data.service";
 
 import {ToastrModule, ToastrService} from "toastr-ng2";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";

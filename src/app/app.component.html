@@ -1,5 +1,40 @@
-<nav class="navbar navbar-light " style="background-color: #F45D5D;">
-  <h4 style="color: whitesmoke; margin-left: 50px">NG-Morocco Demo APP (Angular + Firebase + RXJS)</h4>
-  <button class="btn btn-light pull-right" *ngIf="logged" (click)="logout()">logout</button>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse bg-faded">
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="#">Road To Russia</a>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+  <form class="form-inline">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">logout</button>
+  </form>
+
 </nav>
+
 <router-outlet></router-outlet>
