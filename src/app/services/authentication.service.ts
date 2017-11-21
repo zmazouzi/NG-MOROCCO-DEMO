@@ -1,24 +1,14 @@
 import {Injectable} from '@angular/core';
-import {AngularFireAuth} from "angularfire2/auth";
 import * as firebase from "firebase";
 import {Observable} from "rxjs/Observable";
+import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "angularfire2/firestore";
 import {Router} from "@angular/router";
 import {ToastrService} from "toastr-ng2";
-
-
-export interface User {
-  uid?: string,
-  email?: string,
-  photoURL?: string,
-  displayName?: string,
-  lastLog?: number,
-  state?: string,
-  WaverDisplayName?: string
-}
+import {User} from "../models/user.model";
 
 @Injectable()
-export class AuthService {
+export class AuthenticationService {
   userRef: any;
   ngUser: Observable<User>;
   userData: any;
@@ -43,18 +33,18 @@ export class AuthService {
     })
   }
 
-  loginGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider()
+  loginWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
-  loginGithub() {
-    const provider = new firebase.auth.GithubAuthProvider()
+  loginWithGithub() {
+    const provider = new firebase.auth.GithubAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   oAuthLogin(provider) {
-    console.log("login start ")
+    console.log("login start ");
     return this.afAuth.auth.signInWithPopup(provider)
       .then(credentials => {
         console.log("login load ");

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthService} from "../services/auth.service";
-import {Observable} from "rxjs/Observable";
+import {AuthenticationService} from "../services/authentication.service";
 import {AngularFireAuth} from "angularfire2/auth";
 
 @Component({
@@ -11,10 +10,8 @@ import {AngularFireAuth} from "angularfire2/auth";
 })
 export class LoginComponent implements OnInit {
 
-  user: Observable<any>;
-
   constructor(private router: Router,
-              private authService: AuthService,
+              private authenticationService: AuthenticationService,
               private afAuth: AngularFireAuth) {
 
   }
@@ -26,10 +23,10 @@ export class LoginComponent implements OnInit {
   }
 
   public loginWithGoogle():void {
-    this.authService.loginGoogle();
+    this.authenticationService.loginWithGoogle();
   }
 
   public loginWithGithub():void {
-    this.authService.loginGithub();
+    this.authenticationService.loginWithGithub();
   }
 }
