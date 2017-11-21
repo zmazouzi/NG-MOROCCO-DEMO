@@ -2,6 +2,19 @@
   padding-top:100px;
 }
 .hand:hover {
-
   animation: wobble 1s;
+}
+
+#content-wrap {
+  background-image: url(assets/bg.jpg);
+  background-color: #fff;
+  background-repeat: repeat-x;
+  background-position: center 0;
+}
+
+#login-content-wrap {
+  background-image: url(assets/bg.jpg);
+  background-color: #fff;
+  background-repeat: round;
+  background-position: center 0;
 }
