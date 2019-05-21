@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import {AuthService} from "./auth.service";
+import {Injectable} from '@angular/core';
+import {AuthenticationService} from "./authentication.service";
 import {AngularFirestore, AngularFirestoreCollection} from "angularfire2/firestore";
 import {Observable} from "rxjs/Observable";
 import {AngularFireAuth} from "angularfire2/auth";
-import * as _ from 'lodash'
 import {ToastrService} from "toastr-ng2";
 @Injectable()
 export class DataService {
@@ -12,23 +11,13 @@ export class DataService {
 
   userID: any;
 
-
-
-  constructor(private authService: AuthService,
+  constructor(private authenticationService: AuthenticationService,
               private afs: AngularFirestore,
               private afAuth: AngularFireAuth,
-              private toastrService: ToastrService
-  ) {
+              private toastrService: ToastrService) {
 
-    // Get the list of ngUSERS
-
-    this.ngUsersRef = afs.collection('users', ref => ref.orderBy("state",'desc'))
+    this.ngUsersRef = afs.collection('users', ref => ref.orderBy("state", 'desc'));
     this.ngUsers = this.ngUsersRef.valueChanges();
-
-
   }
-
-
-
 
 }
